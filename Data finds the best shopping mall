@@ -1,0 +1,28 @@
+1.	Introduction
+
+1.1	Background
+Exploring a new city can be challenging at times. If that city is a busy megacity, then the exploring can become a daunting task. It is easy for someone to get lost in the convoluted maze of streets in the city. A city may offer lots of interesting places for a new visitor. But it would not only be exhaustive for the visitor, but also expensive in terms of time and money. So, to choose the most popular spots for the purpose of checking out, it only makes sense if someone mines the data of all places and somehow find the best place to explore. To assist the tourist in this endeavor, Foursquare data can come handy and by analyzing the data in proper manner, a person can easily identify the popular spots (of certain category). This will be just another way where data science comes to rescue by sheding light in myriad data and answers the question posited.
+
+1.2	Problem
+This project aims to guide a tourist to select the most trending shopping malls in a predetermined radius (as selected by the user) from the current location of the tourist by clustering the shopping malls of the said region based on the “Likes” as given by other users to those venues. There will be three (3) clusters which will divide the shopping malls in three classes namely – Above Average, Average and Below Average.
+
+1.3	Interest
+Anyone who would like to explore a given area for a venue of a specific categories can find this application useful as it will arrange the venues with similar popularities in respective clusters, making it easier for user to understand the quality of the venues. The location provider can also use the features to present the list of venues in an easy-to-understand way for the users.
+
+
+2.	Data Processing
+
+2.1	Data Source and Collection
+The location data will be collected using the Foursquare, which is a location service provider. The Places API of Foursquare Developer will be used for sourcing the data. In this case, the test data will be selected from Dhaka, the capital city of Bangladesh. As a particular area of Dhaka, Dhanmondi is chosen. Dhanmondi is a popular zone in Dhaka city for many recreational activities as well as for shopping. So, the data of shopping malls of Dhanmondi will be obtained using the Foursquare places API and will be processed accordingly.
+
+2.2	Data Preparation
+Using the API of Foursquare, within the radius of 3000 meters, keeping Dhanmondi as the center, a list of nearby shopping malls is generated. The raw data is converted to a JSON dataframe for better understanding. A total of 30 shopping malls with 18 columns (features) have populated the dataframe.
+
+Then, only columns that include venue name and anything that is associated with location were kept and column names were appropriately edited.
+
+A venue ID list is generated for the purpose of extracting Likes from each venue. After getting like count of each venue, a list of likes for each venue is produced. 
+
+This list was appended to the main dataframe and then the entire table was sorted in descending order based on likes. 
+
+2.3	Feature Selection
+Finally, only venue name, the distance from the tourist and the corresponding likes of the venue are kept as the selected features from the aforementioned dataframe. This is the final dataset which is used for feeding into the machine learning algorithm. All other columns/features are deemed unnecessary at this point for the purpose of this project, so they were dropped.
